@@ -1,2 +1,2 @@
 export * from './find-sum';
-export * from './get-initial-deck';
+export * from './get-full-deck';
