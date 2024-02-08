@@ -55,5 +55,6 @@ export const gameStateSlice = createSlice({
   },
 });
 
-export const { play15: updateUser } = gameStateSlice.actions;
+export const { resetState, startGame, startRound, play15 } =
+  gameStateSlice.actions;
 export default gameStateSlice.reducer;
