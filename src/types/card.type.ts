@@ -4,10 +4,7 @@ export type Value = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 export type Suit = 'Spade' | 'Club' | 'Heart' | 'Diamond';
 
 export class Card {
-  readonly value: Value;
-  readonly suit: Suit;
-
-  constructor(value: Value, suit: Suit) {
+  constructor(readonly value: Value, readonly suit: Suit) {
     this.value = value;
     this.suit = suit;
   }
