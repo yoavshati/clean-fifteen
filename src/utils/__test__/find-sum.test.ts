@@ -1,3 +1,5 @@
+import { describe, expect, test } from 'vitest';
+
 import { Card } from '../../types';
 import { findSum } from '../find-sum';
 
