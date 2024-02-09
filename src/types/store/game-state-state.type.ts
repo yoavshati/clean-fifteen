@@ -1,6 +1,6 @@
 import { Card } from '../card.type';
 
-export interface gameStateState {
+export interface GameStateState {
   deck: Card[];
   cardsInPlay: Card[];
   cardsInHands: Card[][];

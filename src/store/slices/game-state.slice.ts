@@ -1,9 +1,10 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { gameStateState } from '../../types/store';
-import { findSum, getFullDeck } from '../../utils';
-import { Card } from '../../types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: gameStateState = {
+import { Card } from '../../types';
+import { GameStateState } from '../../types/store';
+import { findSum, getFullDeck } from '../../utils';
+
+const initialState: GameStateState = {
   deck: getFullDeck(),
   cardsInPlay: [],
   cardsInHands: [],
@@ -24,23 +25,23 @@ export const gameStateSlice = createSlice({
     play15: (
       state,
       {
-        payload: { openCards, cardFromHand },
+        payload: { commonCards, cardFromHand },
       }: PayloadAction<{
-        openCards: Card[];
+        commonCards: Card[];
         cardFromHand: Card;
       }>
     ) => {
-      if (findSum([...openCards, cardFromHand]) !== 15) {
+      if (findSum([...commonCards, cardFromHand]) !== 15) {
         throw Error('Someone miscalculated and somehow it got through');
       }
 
       state.cardsInPlay = state.cardsInPlay.filter((cardInPlay) =>
-        openCards.some((openCard) => openCard.sameAs(cardInPlay))
+        commonCards.every((commonCard) => !commonCard.sameAs(cardInPlay))
       );
 
       state.cardsInHands[state.currentPlayerIndex] = state.cardsInHands[
         state.currentPlayerIndex
-      ].filter((cardInPlay) => cardFromHand.sameAs(cardInPlay));
+      ].filter((cardInPlay) => !cardFromHand.sameAs(cardInPlay));
 
       state.lastPlayerWhoGot15 = state.currentPlayerIndex;
 

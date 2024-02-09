@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { SettingsState } from '../../types/store';
 
 const initialState: SettingsState = {

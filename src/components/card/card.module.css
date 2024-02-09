@@ -1,0 +1,20 @@
+.cardBorder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 0.75rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+.cardBorder:hover,
+.glow {
+  box-shadow: 0 0 0.5rem #ffffffcc;
+}
+
+.back {
+  background-color: rgb(213, 139, 228);
+}
